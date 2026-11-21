@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estimate to Excel</title>
+<style>
+body{font-family:Arial,sans-serif;background:#f2f6fa;margin:0;padding:20px;text-align:center}
+main{max-width:650px;margin:auto;background:white;padding:22px;border-radius:14px;box-shadow:0 3px 12px #ddd}
+h2{color:#12543d}
+button{background:#087a52;color:white;border:0;padding:13px 20px;border-radius:8px;margin:10px;cursor:pointer}
+input{margin:16px 0;max-width:100%}
+img{width:90px;height:110px;object-fit:cover;margin:5px}
+#preview{display:flex;flex-wrap:wrap;justify-content:center}
+small{color:#555}
+</style>
+</head>
+<body>
+<main>
+<h2>শিক্ষা প্রকৌশল অধিদপ্তর, কিশোরগঞ্জ</h2>
+<h3>Estimate to Excel</h3>
+<p>গ্যালারি থেকে এস্টিমেটের ছবি নির্বাচন করুন</p>
+<input type="file" id="photos" accept="image/*" multiple>
+<div id="preview"></div>
+<p id="status">কোনো ছবি নির্বাচন করা হয়নি</p>
+<button onclick="process()">Estimate তৈরি করুন</button>
+<p><small>AI সংযোগ এখনো চালু হয়নি।</small></p>
+</main>
+<script>
+const input=document.getElementById('photos');
+input.onchange=()=>{
+ const preview=document.getElementById('preview');
+ preview.innerHTML='';
+ for(const file of input.files){
+  const img=document.createElement('img');
+  img.src=URL.createObjectURL(file);
+  preview.appendChild(img);
+ }
+ document.getElementById('status').textContent=
+ input.files.length+'টি ছবি নির্বাচন করা হয়েছে';
+};
+function process(){
+ alert('ছবি থেকে স্বয়ংক্রিয় Excel তৈরির জন্য AI সংযোগ প্রয়োজন।');
+}
+</script>
+</body>
+</html>
